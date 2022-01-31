@@ -32,6 +32,11 @@ variable "key_name" {
   default     = "AfKeyPair"
 }
 
+variable "sg_ip_address" {
+  type        = list(any)
+  description = "IP addresses to grant access to instance via ssh"
+}
+
 variable "lb_port" {
   type        = string
   description = "The port to listen on for the load balancer"

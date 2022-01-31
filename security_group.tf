@@ -7,7 +7,7 @@ resource "aws_security_group" "jenkins_remote" {
 resource "aws_security_group_rule" "jenkins_remote_22" {
   description       = "Allow TCP/22 to Jenkins Server"
   type              = "ingress"
-  cidr_blocks       = ["0.0.0.0/0"]
+  cidr_blocks       = var.sg_ip_address
   from_port         = 22
   to_port           = 22
   protocol          = "tcp"

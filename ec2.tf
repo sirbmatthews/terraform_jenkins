@@ -36,10 +36,17 @@ resource "aws_instance" "jenkins_master" {
     sudo yum install jenkins java-1.8.0-openjdk-devel -y
     sudo yum install openssh-server -y
     sudo service jenkins start
+    sudo -su jenkins
+    ssh-keygen -q -t rsa -b 4096 -C "jenkins-master" -N '' -f /var/lib/jenkins/.ssh/id_rsa
     EOF
 
   tags = {
-    "Name" = "${var.project}_master_${count.index}"
+    Application = "${var.project}"
+    Environment = "${var.environment}"
+    Name        = "${var.project}_master_${count.index}"
+    OS          = "Linux"
+    Purpose     = "Host Jenkins Master Node"
+    Source      = "Terraform"
   }
 }
 
@@ -57,6 +64,11 @@ resource "aws_instance" "jenkins_slaves" {
     EOF
 
   tags = {
-    "Name" = "${var.project}_slave_${count.index}"
+    Application = "${var.project}"
+    Environment = "${var.environment}"
+    Name        = "${var.project}_slave_${count.index}"
+    OS          = "Linux"
+    Purpose     = "Host Jenkins Slave Node"
+    Source      = "Terraform"
   }
 }

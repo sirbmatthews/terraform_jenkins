@@ -1,98 +1,98 @@
 variable "project" {
   type        = string
-  description = "The project name"
+  description = "Set the project name."
 }
 
 variable "environment" {
   type        = string
-  description = "The environment name"
+  description = "Set the environment name."
 }
 
 variable "name" {
   type        = string
-  description = "A common name used for resources"
+  description = "Set a common name used for resources."
   default     = "jenkins"
 }
 
 variable "region" {
   type        = string
-  description = "The region for AWS VPC"
+  description = "Set the region for AWS VPC."
   default     = "af-south-1"
 }
 
 variable "instance_type" {
   type        = string
-  description = "The EC2 instance type to be used for the selected region"
+  description = "Set the EC2 instance type to be used for the chosen region."
   default     = "t3.micro"
 }
 
 variable "key_name" {
   type        = string
-  description = "The authentication key name that allows SSH connection into an EC2 instance"
+  description = "Set the Key Pair name used for authenticating SSH connection into EC2 instances."
   default     = "AfKeyPair"
 }
 
 variable "sg_ip_address" {
   type        = list(any)
-  description = "IP addresses to grant access to instance via ssh"
+  description = "Set the list of whitelisted IP addresses to access EC2 instance via SSH."
 }
 
 variable "lb_port" {
   type        = string
-  description = "The port to listen on for the load balancer"
+  description = "Set the port to listen on for the Load Balancer."
   default     = "8080"
 }
 
 variable "lb_protocol" {
   type        = string
-  description = "The protocol to listen on. Valid values are HTTP, HTTPS, TCP, or SSL"
+  description = "Set the protocol to listen on. Valid values are HTTP, HTTPS, TCP, or SSL."
   default     = "HTTP"
 }
 
 variable "lb_target_type" {
   type        = string
-  description = "The laod balancer target type"
+  description = "Set the Load Balancer target type."
   default     = "instance"
 }
 
 variable "lb_healthcheck_interval" {
   type        = string
-  description = "The interval between checks"
+  description = "Set the interval between checks."
   default     = 30
 }
 
 variable "lb_healthcheck_timeout" {
   type        = string
-  description = "The length of time before the check times out"
+  description = "Set the length of time before the check times out."
   default     = 10
 }
 
 variable "lb_healthy_threshold" {
   type        = string
-  description = "The number of checks before the instance is declared health"
+  description = "Set the number of checks before the instance is declared health."
   default     = 3
 }
 
 variable "lb_unhealthy_threshold" {
   type        = string
-  description = "The number of checks before the instance is declared unhealthy"
+  description = "Set the number of checks before the instance is declared unhealthy."
   default     = 2
 }
 
 variable "lb_internal" {
   type        = string
-  description = "If true, LB will be an internal LB"
+  description = "If true, Load Balancer will be an internal Load Balancer."
   default     = false
 }
 
 variable "lb_address_type" {
   type        = string
-  description = "ipv4 or ipv6"
+  description = "Set the Internet Protocol version."
   default     = "ipv4"
 }
 
 variable "lb_type" {
   type        = string
-  description = "The type of load balancer"
+  description = "Set the type of Load Balancer."
   default     = "application"
 }

@@ -34,7 +34,8 @@ resource "aws_instance" "jenkins_master" {
     sudo yum install daemonize -y
     sudo yum install jenkins -y
     sudo yum install jenkins java-1.8.0-openjdk-devel -y
-    sudo yum install openssh-server -y
+    sudo mv /var/lib/jenkins /home
+    sudo ln -s /home/jenkins /var/lib/jenkins
     sudo service jenkins start
     EOF
 
@@ -48,7 +49,7 @@ resource "aws_instance" "jenkins_master" {
   }
 }
 
-resource "aws_instance" "jenkins_slaves" {
+resource "aws_instance" "jenkins_slave" {
   ami             = data.aws_ami.amazon-linux-2.id
   instance_type   = var.instance_type
   security_groups = [aws_security_group.jenkins_remote.name]
